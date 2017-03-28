@@ -30,6 +30,12 @@
 						</div>
 					</div>
 				</div>
+				<div v-if="won" class="ui green inverted center aligned segment">
+					<h1>YOU WON!</h1>
+				</div>
+				<div v-else-if="lost" class="ui red inverted center aligned segment">
+					<h1>YOU LOST :(</h1>
+				</div>
 				<div v-if="givenup" class="ui center aligned segment">
 					<div  @click.stop="start" class="ui green button">START NEW GAME</div>	
 				</div>
@@ -39,7 +45,21 @@
 					<div class="ui center aligned segment"><div @click.stop="heal" class="ui green button">HEAL</div></div>
 					<div class="ui center aligned segment"><div @click.stop="givenup=!givenup"  class="ui white button">GIVE UP</div></div>
 				</div>
-				<div class="ui segment"></div>
+				<div v-if="!givenup" class="ui horizontal segments">
+					<div class="ui segment">
+						<div v-for="attack in reverse(playerAttacks)" class="ui green inverted center aligned segment">
+							<div v-if="attack>0">Player dealt {{attack}} damage</div>
+							<div v-else>
+								Player healed with {{-attack}}
+							</div>
+						</div>
+					</div>
+					<div class="ui segment">
+						<div v-for="attack in reverse(enemyAttacks)" class="ui red inverted center aligned segment">
+							Enemy attacked back and dealt {{attack}} damage
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="three wide column"></div>
