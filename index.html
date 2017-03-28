@@ -43,11 +43,11 @@
 					<div class="ui center aligned segment"><div @click.stop="attack" class="ui red button">ATTACK</div></div>	
 					<div class="ui center aligned segment"><div @click.stop="specialAttack" class="ui orange button">SPECIAL ATTACK</div></div>
 					<div class="ui center aligned segment"><div @click.stop="heal" class="ui green button">HEAL</div></div>
-					<div class="ui center aligned segment"><div @click.stop="givenup=!givenup"  class="ui white button">GIVE UP</div></div>
+					<div class="ui center aligned segment"><div @click.stop="start"  class="ui white button">GIVE UP</div></div>
 				</div>
-				<div v-if="!givenup" class="ui horizontal segments">
+				<div v-if="playerAttacks.length>0" class="ui horizontal segments">
 					<div class="ui segment">
-						<div v-for="attack in reverse(playerAttacks)" class="ui green inverted center aligned segment">
+						<div v-for="attack in reverse(playerAttacks)" class="ui blue inverted center aligned segment">
 							<div v-if="attack>0">Player dealt {{attack}} damage</div>
 							<div v-else>
 								Player healed with {{-attack}}
