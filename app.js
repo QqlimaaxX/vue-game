@@ -29,11 +29,9 @@ app = new Vue({
             this.magicStyle.width = this.magic+"%";
             // console.log(this.playerHealth,this.enemyHealth);
             if(this.enemyHealth<=0){
-            	alert("You won!!");
             	this.won=true;
             	this.givenup=!this.givenup;
             }else if(this.playerHealth<=0){
-            	alert("You lost");
             	this.lost=true;
             	this.givenup=!this.givenup;
             }
@@ -67,7 +65,6 @@ app = new Vue({
 	            this.playerHealth -= atk;
 	            this.enemyAttacks.push(atk);
 	        }
-	        this.magic+=10;
 	        if(this.magic>100){
 	        	this.magic=100;
 	        }
@@ -76,6 +73,7 @@ app = new Vue({
 
         attack: function() {
         	var atk = Math.floor(Math.random()*3+7);
+        	this.magic+=10;
         	this.playerAttacks.push(atk)
             this.enemyHealth -= atk;
             this.monsterAttack();
