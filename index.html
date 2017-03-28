@@ -49,9 +49,14 @@
 					<div  @click.stop="start" class="ui green button">START NEW GAME</div>	
 				</div>
 				<div v-if="!givenup" class="ui horizontal segments">
-					<div class="ui center aligned segment"><div @click.stop="attack" class="ui red button">ATTACK</div></div>	
-					<div class="ui center aligned segment"><div @click.stop="specialAttack" class="ui orange button">SPECIAL ATTACK</div></div>
-					<div class="ui center aligned segment"><div @click.stop="heal" class="ui green button">HEAL</div></div>
+					<div class="ui center aligned segment">
+						<div @click.stop="attack" class="ui red button">ATTACK
+							<div class="ui circular blue label">+10 MAGIC</div>
+						</div>
+					</div>	
+					<div class="ui center aligned segment"><div @click.stop="specialAttack" class="ui orange button">SPECIAL ATTACK
+					<div class="ui label red circular">-25 MAGIC</div></div></div>
+					<div class="ui center aligned segment"><div @click.stop="heal" class="ui green button">HEAL<div class="ui label red circular">-30 MAGIC</div></div></div>
 					<div class="ui center aligned segment"><div @click.stop="start"  class="ui white button">GIVE UP</div></div>
 				</div>
 				<div v-if="playerAttacks.length>0" class="ui horizontal segments">
