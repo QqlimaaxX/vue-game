@@ -37,12 +37,19 @@ app = new Vue({
             	this.lost=true;
             	this.givenup=!this.givenup;
             }
+            if(this.playerAttacks.length>5){
+            	this.playerAttacks.splice(0,1);
+            }
+            if(this.enemyAttacks.length>5){
+            	this.enemyAttacks.splice(0,1);
+            }
         },
         start: function() {
             this.playerHealth = 100;
             this.enemyHealth = 100;
             this.won=false;
             this.lost=false;
+            this.magic = 100;
             this.playerAttacks=[];
             this.enemyAttacks=[];
             this.givenup = !this.givenup;
@@ -75,7 +82,7 @@ app = new Vue({
         },
         specialAttack: function() {
         	if(this.magic>=25){
-	        	var atk =Math.floor(Math.random()*12+8);
+	        	var atk =Math.floor(Math.random()*20+10);
 	            this.enemyHealth -= atk;
 	            this.playerAttacks.push(atk);
 	            this.magic-=25;
@@ -84,7 +91,7 @@ app = new Vue({
         },
         heal: function() {
         	if(this.magic>=30 && this.playerHealth<100){
-	        	var hea=Math.floor(Math.random()*10+10);
+	        	var hea=Math.floor(Math.random()*20+10);
 	        	this.magic-=30;
 	            this.playerHealth += hea;
 	            this.playerAttacks.push(-hea);
